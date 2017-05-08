@@ -1,6 +1,6 @@
 -- Title: Demonology Skin Tracker
 -- Author: LownIgnitus
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Desc: Addon to track heads collected for demonology artifact skin
 
 CF = CreateFrame
@@ -138,8 +138,8 @@ fontString:SetPoint("CENTER", messageFrame, "CENTER", 0, 0)
 
 function dstQuestCheck()
 	if IsQuestFlaggedCompleted(head1.quest) == false then
-		fontString:SetText("|cff9482C9You just found the |r|cffe6cc80" .. artifactSkin.name .. "|r|cff9482C9!|r")
-		print("|cff9482C9You just found the |r|cffe6cc80" .. artifactSkin.name .. "|r|cff9482C9! Enjoy your new skin!|r")
+		--fontString:SetText("|cff9482C9You just found the |r|cffe6cc80" .. artifactSkin.name .. "|r|cff9482C9!|r")
+		--print("|cff9482C9You just found the |r|cffe6cc80" .. artifactSkin.name .. "|r|cff9482C9! Enjoy your new skin!|r")
 	else
 		if dstSettings.saves.head1Save == true then
 			--
@@ -223,7 +223,7 @@ function dstTime_OnUpdate(self, elapsed)
 end
 
 function dstEvents_table.eventFrame:BAG_UPDATE(number, containerID)
-	print("Bag Update. number: " .. number .. ".")
+	--print("Bag Update. number: " .. number .. ".")
 	local class, className = UnitClass("player")
 	if className == "WARLOCK" then
 		dstQuestCheck()
