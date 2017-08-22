@@ -1,6 +1,6 @@
 -- Title: Demonology Skin Tracker
 -- Author: LownIgnitus
--- Version: 1.0.1
+-- Version: 1.0.2
 -- Desc: Addon to track heads collected for demonology artifact skin
 
 CF = CreateFrame
@@ -34,7 +34,7 @@ function dstEvents_table.eventFrame:ADDON_LOADED(AddOn)
 	dstEvents_table.eventFrame:UnregisterEvent("ADDON_LOADED")
 
 	-- Defaults
-	local deafults = {
+	local defaults = {
 		["options"] = {
 			["dstActivate"] = true,
 
@@ -45,9 +45,8 @@ function dstEvents_table.eventFrame:ADDON_LOADED(AddOn)
 			["head3Save"] = false,
 			["head4Save"] = false,
 			["head5Save"] = false,
-			["head6Save"] = false,
 			["artifactSkinSave"] = false,
-		}
+		},
 	}
 
 	local function dstSVCheck(src, dst)
@@ -55,7 +54,7 @@ function dstEvents_table.eventFrame:ADDON_LOADED(AddOn)
 		if type(dst) ~= "table" then dst = {} end
 		for k, v in pairs(src) do
 			if type(v) == "table" then
-				dst[k] = dstSVCheck(v, dst[k])
+				dst[k] = dstSVCheck(v,dst[k])
 			elseif type(v) ~= type(dst[k]) then
 				dst[k] = v
 			end
@@ -63,7 +62,7 @@ function dstEvents_table.eventFrame:ADDON_LOADED(AddOn)
 		return dst
 	end
 
-	dstSettings = dstSVCheck(deafults, dstSettings)
+	dstSettings = dstSVCheck(defaults, dstSettings)
 	dstOptionsInit();
 end
 

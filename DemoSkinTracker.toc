@@ -1,11 +1,11 @@
 ## Interface: 70200
 ## Title: |cff00ff00Demo Skin Tracker|r
-## Version: |cffFF4500v1.0.1|r
+## Version: |cffFF4500v1.0.2|r
 ## Author: |cffDA70D6LownIgnitus|r Mihkael@US-Alexstrasza
-## X-Date: 30/03/2017
+## X-Date: 21/08/2017
 ## Notes: Addon to track skulls collected for demonology artifact skin
 
 ## Dependencies: 
-## SavedVariables: dstSettings
+## SavedVariablesPerCharacter: dstSettings
 
 DemoSkinTracker.lua
