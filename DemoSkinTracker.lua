@@ -1,6 +1,6 @@
 -- Title: Demonology Skin Tracker
 -- Author: LownIgnitus
--- Version: 1.0.2
+-- Version: 1.0.3
 -- Desc: Addon to track heads collected for demonology artifact skin
 
 CF = CreateFrame
