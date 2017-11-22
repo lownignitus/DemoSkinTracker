@@ -1,6 +1,6 @@
 -- Title: Demonology Skin Tracker
 -- Author: LownIgnitus
--- Version: 1.0.3
+-- Version: 1.0.4
 -- Desc: Addon to track heads collected for demonology artifact skin
 
 CF = CreateFrame
@@ -14,6 +14,21 @@ local artifactSkin = {["name"] = "Visage of the First Wakener", ["id"] = 139576}
 local headCount = 0
 local elapsedTime = 0.0
 SLASH_DEMOSKINTRACKER1 = "/dst" or "/DST" or "/DemoSkinTracker" or "/demoskintracker" or "/DemonologySkinTracker" or "/demonologyskintracker"
+
+-- Defaults
+local defaults = {
+	["options"] = {
+		["dstActivate"] = true,
+	},
+	["saves"] = {
+		["head1Save"] = false,
+		["head2Save"] = false,
+		["head3Save"] = false,
+		["head4Save"] = false,
+		["head5Save"] = false,
+		["artifactSkinSave"] = false,
+	},
+}
 
 -- RegisterForEvent table
 local dstEvents_table = {}
@@ -33,21 +48,6 @@ function dstEvents_table.eventFrame:ADDON_LOADED(AddOn)
 	-- unregister ADDON_LOADED
 	dstEvents_table.eventFrame:UnregisterEvent("ADDON_LOADED")
 
-	-- Defaults
-	local defaults = {
-		["options"] = {
-			["dstActivate"] = true,
-
-		},
-		["saves"] = {
-			["head1Save"] = false,
-			["head2Save"] = false,
-			["head3Save"] = false,
-			["head4Save"] = false,
-			["head5Save"] = false,
-			["artifactSkinSave"] = false,
-		},
-	}
 
 	local function dstSVCheck(src, dst)
 		if type(src) ~= "table" then return {} end
@@ -73,7 +73,7 @@ end
 function dstInitialize()
 	--print("dstInitialize")
 	headCount = 0
-	if dstSettings.saves.head1Save == false then
+	if dstSettings.saves.head1Save == false or dstSettings == nil then
 		--headCount = 0
 		--print("HeadCount: " .. headCount)
 	else
@@ -120,6 +120,22 @@ function dstEvents_table.eventFrame:PLAYER_LOGIN()
 	local class, className = UnitClass("player")
 	--print(className)
 	if className == "WARLOCK" then
+		if not dstSettings then
+			local function dstSVCheck(src, dst)
+				if type(src) ~= "table" then return {} end
+				if type(dst) ~= "table" then dst = {} end
+				for k, v in pairs(src) do
+					if type(v) == "table" then
+						dst[k] = dstSVCheck(v,dst[k])
+					elseif type(v) ~= type(dst[k]) then
+						dst[k] = v
+					end
+				end
+				return dst
+			end
+
+			dstSettings = dstSVCheck(defaults, dstSettings)
+		end
 		dstInitialize();
 		dstQuestCheck()
 	else
