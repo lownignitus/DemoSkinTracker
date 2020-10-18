@@ -1,6 +1,6 @@
 -- Title: Demonology Skin Tracker
 -- Author: LownIgnitus
--- Version: 1.0.7
+-- Version: 1.0.8
 -- Desc: Addon to track heads collected for demonology artifact skin
 
 CF = CreateFrame
@@ -152,7 +152,7 @@ local fontString = messageFrame:CreateFontString(nil, "ARTWORK", "BossEmoteNorma
 fontString:SetPoint("CENTER", messageFrame, "CENTER", 0, 0)
 
 function dstQuestCheck()
-	if IsQuestFlaggedCompleted(head1.quest) == false then
+	if C_QuestLog.IsQuestFlaggedCompleted(head1.quest) == false then
 		--fontString:SetText("|cff9482C9You just found the |r|cffe6cc80" .. artifactSkin.name .. "|r|cff9482C9!|r")
 		--print("|cff9482C9You just found the |r|cffe6cc80" .. artifactSkin.name .. "|r|cff9482C9! Enjoy your new skin!|r")
 	else
@@ -164,7 +164,7 @@ function dstQuestCheck()
 			dstSettings.saves.head1Save = true
 		end
 
-		if IsQuestFlaggedCompleted(head2.quest) == false then
+		if C_QuestLog.IsQuestFlaggedCompleted(head2.quest) == false then
 			--
 		else
 			if dstSettings.saves.head2Save == true then
@@ -174,7 +174,7 @@ function dstQuestCheck()
 				dstSettings.saves.head2Save = true
 			end
 
-			if IsQuestFlaggedCompleted(head3.quest) == false then
+			if C_QuestLog.IsQuestFlaggedCompleted(head3.quest) == false then
 				--
 			else
 				if dstSettings.saves.head3Save == true then
@@ -185,7 +185,7 @@ function dstQuestCheck()
 					dstSettings.saves.head3Save = true
 				end
 
-				if IsQuestFlaggedCompleted(head4.quest) == false then
+				if C_QuestLog.IsQuestFlaggedCompleted(head4.quest) == false then
 					--
 				else
 					if dstSettings.saves.head4Save == true then
@@ -196,7 +196,7 @@ function dstQuestCheck()
 						dstSettings.saves.head4Save = true
 					end
 
-					if IsQuestFlaggedCompleted(head5.quest) == false then
+					if C_QuestLog.IsQuestFlaggedCompleted(head5.quest) == false then
 						--
 					else
 						if dstSettings.saves.head5Save == true then
