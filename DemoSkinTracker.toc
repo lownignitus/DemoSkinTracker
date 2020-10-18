@@ -1,8 +1,8 @@
-## Interface: 8000
+## Interface: 90001
 ## Title: |cff00ff00Demo Skin Tracker|r
-## Version: |cffFF4500v1.0.5|r
+## Version: |cffFF4500v1.0.6|r
 ## Author: |cffDA70D6LownIgnitus|r Mihkael@US-Alexstrasza
-## X-Date: 21/11/2017
+## X-Date: 17/10/2020
 ## Notes: Addon to track skulls collected for demonology artifact skin
 
 ## Dependencies: 
